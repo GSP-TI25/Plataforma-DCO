@@ -1,0 +1,104 @@
+/* Ubicación: DCO/apps/frontend/src/app/dashboard/campaigns/[id]/DetailPage.module.scss */
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detailContainer {
+  /* NUEVO: Limitamos el ancho y centramos para mejor lectura en pantallas grandes */
+  max-width: 1200px;
+  margin: 0 auto; /* Centra el contenedor */
+  animation: fadeInContent 0.5s ease-out; /* Aplicamos la animación */
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+}
+
+.content {
+  /* NUEVO: Usamos grid para poder añadir más tarjetas fácilmente en el futuro */
+  display: grid;
+  gap: 2rem;
+  /* Por ahora una columna, pero podría ser repeat(2, 1fr) si añadimos más info */
+  grid-template-columns: 1fr;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 0.5rem 0;
+      strong {
+        color: #4b5563;
+      }
+    }
+  }
+}
+
+.badge {
+  // Reutilizamos los mismos estilos de badge que en la tabla
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+
+  &.active { background-color: #dcfce7; color: #166534; }
+  &.paused { background-color: #feefc7; color: #92400e; }
+  &.draft { background-color: #e0e7ff; color: #3730a3; }
+  &.archived { background-color: #f3f4f6; color: #4b5563; }
+}
+
+ 
+.actionsHeader {
+  margin-bottom: 1.5rem;
+}
+
+.botonRegresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #f9fafb;
+    color: #1f2937;
+  }
+}

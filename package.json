@@ -1,0 +1,15 @@
+
+{
+  "name": "dco-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma de Optimización de Creatividades Dinámicas (DCO)",
+  "scripts": {
+    "dev": "npx concurrently --names \"DATABASE,BACKEND,FRONTEND\" -c \"blue,magenta,green\" \"docker compose --env-file ./apps/backend/.env up --build\" \"npm run dev --prefix apps/backend\" \"npm run dev --prefix apps/frontend\""
+  },
+  "author": "Alexander",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

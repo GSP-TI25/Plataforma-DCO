@@ -1,0 +1,111 @@
+// Ubicación: DCO/apps/frontend/src/components/estudio/ElementoCanvas.module.scss
+.elemento {
+  position: absolute; /* ¡Esto es crucial! */
+  cursor: grab;
+  border: 2px dashed transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+}
+
+.texto {
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+
+  /* --- ¡CORRECCIONES CLAVE! --- */
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+  overflow: hidden; /* Oculta el texto que se desborde del alto */
+  overflow-y: auto; /* Si el texto es más alto que la caja, aparece un scroll */
+  :global(p) {
+    margin-top: 0;
+    margin-bottom: 0.5em; /* Un pequeño margen entre párrafos */
+  }
+
+  :global(strong) {
+    font-weight: bold;
+  }
+
+  :global(em) {
+    font-style: italic;
+  }
+
+  /* Estas propiedades ya no las necesitamos y las borramos */
+  /* width: fit-content; */
+  /* max-width: 300px; */
+}
+/* ¡NUEVO ESTILO! Así se verá un elemento seleccionado */
+.seleccionado {
+  border-style: solid;
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  z-index: 10; /* Se asegura de que el elemento seleccionado esté por encima de otros */
+}
+
+/* Ubicación: DCO/apps/frontend/src/components/estudio/ElementoCanvas.module.scss */
+
+/* --- ESTILOS PARA EL CONTENIDO INTERNO --- */
+.contenidoInterno {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ocultamos lo que se desborde */
+  cursor: grab;
+
+  // Estilos específicos para texto
+  &[style*="font-size"] {
+    padding: 0.5rem;
+    word-wrap: break-word;
+    overflow-y: auto; /* Scroll si el texto es muy largo */
+  }
+
+  // Estilos específicos para imagen
+  &[src] {
+    object-fit: cover; /* La imagen siempre llena el contenedor */
+  }
+}
+
+/* --- ESTILOS PARA EL CONTENEDOR DE RND --- */
+.seleccionadoRnd {
+  /* Le ponemos un borde sólido cuando está seleccionado */
+  border: 2px solid #3b82f6 !important; /* Usamos !important para sobreescribir estilos de Rnd */
+
+  /* ESTO ES LO NUEVO: Estilos para los tiradores de redimensionamiento */
+  :global(.react-resizable-handle) {
+    background: #fff;
+    border: 1px solid #3b82f6;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* --- ESTILOS PARA EL TIRADOR DE ROTACIÓN --- */
+.rotationHandle {
+  position: absolute;
+  bottom: -30px; /* Lo posicionamos debajo del elemento */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: grabbing;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  /* La línea que lo conecta al elemento */
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 18px; /* La longitud de la línea */
+    background-color: #3b82f6;
+  }
+}
+

@@ -1,0 +1,11 @@
+//Ubicacion: DCO/apps/frontend/src/app/approve/ApprovalLayout.module.scss
+
+.scrollableContainer {
+  height: 100vh; /* Ocupa el 100% de la altura del viewport */
+  overflow-y: auto; /* Permite el scroll vertical */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar { /* Chrome, Safari and Opera */
+    display: none;
+  }
+}

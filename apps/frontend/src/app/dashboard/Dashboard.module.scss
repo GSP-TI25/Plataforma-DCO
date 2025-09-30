@@ -1,0 +1,54 @@
+// Ubicación: DCO/apps/frontend/src/app/dashboard/Dashboard.module.scss
+
+.tituloPrincipal {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+/* --- LA CUADRÍCULA CORREGIDA --- */
+.cuadriculaMetricas {
+  display: grid;
+  gap: 1.5rem; /* Espacio entre las tarjetas */
+  margin-bottom: 3rem;
+
+  /* Por defecto (móviles), una sola columna */
+  grid-template-columns: 1fr; 
+
+  /* Para tablets (más de 768px), dos columnas */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Para pantallas de escritorio (más de 1024px), cuatro columnas */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Contenedor del Gráfico --- */
+.contenedorGrafico {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.subtitulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+.graficoPlaceholder {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-weight: 500;
+}

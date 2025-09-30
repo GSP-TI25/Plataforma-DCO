@@ -1,0 +1,155 @@
+// Ubicacion: DCO/apps/frontend/src/app/dashboard/planner/PlannerPage.module.scss    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #1f2937;
+      }
+    }
+
+    .planCardLink {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .clientSelector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      label {
+        font-weight: 500;
+        color: #4b5563;
+      }
+    
+      select {
+        min-width: 250px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+    }
+    
+    .boardHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    
+      h2 {
+        font-size: 1.5rem;
+        color: #374151;
+      }
+    }
+    
+    .botonCrear {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    
+      &:hover {
+        background-color: #2563eb;
+      }
+    }
+    
+    .board {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .planCard {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid #3b82f6;
+      transition: all 0.2s ease;
+    
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+    
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+      }
+    
+      p {
+        color: #6b7280;
+        margin-bottom: 1rem;
+        min-height: 40px;
+      }
+      .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .planLink {
+    text-decoration: none;
+    color: inherit;
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+  }
+
+  .cardActions {
+    display: flex;
+    gap: 0.5rem;
+    button {
+      background: none; border: none; cursor: pointer; color: #9ca3af;
+      &:hover { color: #3b82f6; }
+    }
+  }
+    }
+    
+    .statusBadge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+    
+      &.draft { background-color: #e0e7ff; color: #3730a3; }
+      &.pending_approval { background-color: #fef3c7; color: #92400e; }
+      &.approved { background-color: #dcfce7; color: #166534; }
+      &.rejected { background-color: #fee2e2; color: #991b1b; }
+    }
+    
+    .mensajeVacio {
+      color: #9ca3af;
+      text-align: center;
+      padding: 3rem;
+      grid-column: 1 / -1;
+    }
+    

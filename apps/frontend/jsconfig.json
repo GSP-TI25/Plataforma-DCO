@@ -1,0 +1,8 @@
+//Ubicacion: DCO/apps/frontend/jsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+/* Ubicación: DCO/apps/frontend/src/components/templates/TarjetaPlantilla.module.scss */
+.tarjeta {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.preview {
+  height: 150px;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #d1d5db;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.info {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.nombre {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.fecha {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 1rem;
+}
+
+.botonIcono {
+  background: none; border: none; cursor: pointer; padding: 0.5rem;
+  border-radius: 50%; font-size: 1.2rem; display: flex;
+  transition: all 0.2s;
+
+  &.botonEditar {
+    color: #6b7280;
+    &:hover { background-color: #e0e7ff; color: #3730a3; }
+  }
+
+  &.botonBorrar {
+    color: #9ca3af;
+    &:hover { background-color: #fee2e2; color: #b91c1c; }
+  }
+}

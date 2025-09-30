@@ -1,0 +1,227 @@
+/* Ubicación: DCO/apps/frontend/src/app/dashboard/clients/[id]/ClientDetailPage.module.scss */
+
+.detailContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.actionsHeader {
+  margin-bottom: 1.5rem;
+}
+
+.botonRegresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover { background-color: #f9fafb; color: #1f2937; }
+}
+
+.header {
+  margin-bottom: 2rem;
+  h1 { font-size: 2.5rem; font-weight: 700; color: #1f2937; }
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  h2, h3 { font-size: 1.5rem; color: #1f2937; }
+}
+
+.botonAñadir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:hover { background-color: #059669; }
+}
+
+.cardContent {
+  padding: 1rem;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.tablaCredenciales {
+  width: 100%;
+  border-collapse: collapse;
+  th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #f3f4f6; }
+  thead { th { font-size: 0.8rem; color: #6b7280; text-transform: uppercase; } }
+  tbody tr:last-child td { border-bottom: none; }
+}
+
+.platformBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  &.meta { background-color: #dbeafe; color: #1e40af; }
+  &.google { background-color: #fee2e2; color: #991b1b; }
+  &.tiktok { background-color: #e0e7ff; color: #3730a3; }
+}
+
+.botonBorrar {
+  background: none; border: none; cursor: pointer; padding: 0.25rem;
+  border-radius: 4px; display: flex; font-size: 1.2rem;
+  color: #9ca3af; transition: all 0.2s;
+  &:hover { background-color: #fee2e2; color: #b91c1c; }
+}
+
+.botonCargar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover:not(:disabled) { background-color: #f9fafb; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.accountItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  
+  &:not(:last-child){
+    margin-bottom: 0.5rem;
+  }
+
+  &.selected {
+    background-color: #eff6ff; // Azul muy claro para resaltar la selección
+  }
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* --- ¡AQUÍ ESTÁ EL NUEVO DISEÑO DEL BOTÓN! --- */
+.botonVerCampañas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    color: #1f2937;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.cardCampañas {
+  margin-top: 2rem;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  align-self: flex-start;
+  &.status_1 { background-color: #dcfce7; color: #166534; } /* Activa */
+  &.status_2 { background-color: #fee2e2; color: #991b1b; } /* Inactiva */
+
+  /* Estados de Campañas (pueden venir en mayúsculas o minúsculas) */
+  &.active, &.ACTIVE { background-color: #dcfce7; color: #166534; }
+  &.paused, &.PAUSED { background-color: #fef3c7; color: #92400e; }
+  &.archived, &.ARCHIVED { background-color: #f3f4f6; color: #4b5563; }
+  &.deleted, &.DELETED { background-color: #e5e7eb; color: #4b5563; }
+}
+
+.mensajeVacio {
+  text-align: center;
+  color: #9ca3af;
+  padding: 2rem;
+}
+
+.botonesAccion {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.botonIcono {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+
+  &.botonVer {
+    color: #6b7280;
+    &:hover { background-color: #e0e7ff; color: #3730a3; }
+  }
+
+  &.botonBorrar {
+    color: #9ca3af;
+    &:hover { background-color: #fee2e2; color: #b91c1c; }
+  }
+}

@@ -1,0 +1,18 @@
+#Ubicacion: DCO/docker-compose.yml
+# Este archivo solo define el servicio de la base de datos para el entorno de desarrollo local.
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: dco_postgres_db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

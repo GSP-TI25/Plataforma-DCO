@@ -1,0 +1,148 @@
+/* Ubicación: DCO/apps/frontend/src/app/HomePage.module.scss */
+
+/* Su única misión es centrar la tarjeta de login en la pantalla */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1; /* Se asegura que esté por encima del fondo (z-index: -1) */
+  background-color: #2425279b;
+}
+
+/* --- Tarjeta de Login (El efecto de cristal) --- */
+.loginCard {
+  background: rgba(31, 41, 55, 0.75); /* Fondo gris azulado semi-transparente */
+  backdrop-filter: blur(12px); /* El efecto de desenfoque del fondo */
+  padding: 3rem 3.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease-in-out;
+  animation: fadeIn 1s ease-out;
+  position: relative;
+  overflow: hidden; /* Necesario para el efecto de brillo */
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Efecto de brillo que se desliza al pasar el mouse */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: skewX(-20deg);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+/* --- Encabezado de la Tarjeta --- */
+.cardHeader {
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #f9fafb; /* Blanco Nieve */
+  margin-bottom: 0.7rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #d1d5db; /* Gris claro */
+  font-size: 1rem;
+}
+
+/* --- Grupos del Formulario (Inputs y Labels) --- */
+.formGroup {
+  margin-bottom: 2.2rem;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 1rem 0.5rem 0.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(209, 213, 219, 0.4); /* Línea gris translúcida */
+    color: #f9fafb; /* Texto blanco */
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+
+    &:focus {
+      border-bottom-color: #3b82f6; /* Azul Eléctrico */
+    }
+
+    /* Animación de la etiqueta flotante */
+    &:not(:placeholder-shown) + label,
+    &:focus + label {
+      transform: translateY(-1.5rem);
+      font-size: 0.85rem;
+      color: #3b82f6; /* Azul Eléctrico */
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.5rem;
+    color: #d1d5db; /* Gris claro */
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+}
+
+/* --- Botón de Enviar --- */
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  background: #3b82f6; /* Azul Eléctrico */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: #2563eb; /* Azul más oscuro al pasar el mouse */
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    transform: translateY(-3px);
+  }
+}
+
+/* --- Mensaje de Error --- */
+.errorMessage {
+  color: #fca5a5; /* Rojo pastel claro */
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  font-size: 0.95rem;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

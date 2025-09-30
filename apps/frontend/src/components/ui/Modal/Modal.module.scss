@@ -1,0 +1,73 @@
+// Ubicación: DCO/apps/frontend/src/components/ui/Modal/Modal.module.scss
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  animation: scaleUp 0.3s ease;
+  max-height: 90vh; /* <<< AÑADIDO: Limita la altura del modal */
+  display: flex; /* <<< AÑADIDO: Usa flexbox */
+  flex-direction: column; /* <<< AÑADIDO: Apila los hijos verticalmente */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+}
+
+.botonCerrar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #1f2937;
+  }
+}
+
+.large {
+  max-width: 900px; /* Nuevo tamaño para el modal grande */
+}
+
+.contenido {
+  padding: 1.5rem;
+  overflow-y: auto; /* <<< AÑADIDO: Permite el scroll vertical */
+}

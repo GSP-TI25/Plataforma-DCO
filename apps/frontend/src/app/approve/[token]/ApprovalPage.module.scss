@@ -1,0 +1,219 @@
+//Ubicacion: DCO/apps/frontend/src/app/approve/[token]/ApprovalPage.module.scss
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f9fafb;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 2rem;
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  p {
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.copyList {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    color: #374151;
+  }
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .approveButton {
+    background-color: #10b981;
+    color: white;
+    &:hover { background-color: #059669; }
+  }
+
+  .rejectButton {
+    background-color: #ef4444;
+    color: white;
+    &:hover { background-color: #dc2626; }
+  }
+}
+
+.loader, .errorState, .thankYouState {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+}
+
+.thankYouState {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Asegura que ocupe toda la altura disponible */
+  text-align: center;
+  background-color: #f0fdf4; /* Fondo verde muy claro */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+  animation: fadeIn 0.5s ease-out; /* Animación de entrada */
+
+  svg {
+    font-size: 5rem; /* Icono más grande */
+    color: #10b981; /* Verde de éxito */
+    margin-bottom: 1.5rem;
+    animation: bounceIn 0.8s ease-out; /* Animación para el icono */
+  }
+
+  h2 {
+    font-size: 2.5rem; /* Título más grande */
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem; /* Párrafo ligeramente más grande */
+    color: #4b5563;
+    margin-top: 0.5rem;
+    max-width: 600px; /* Limita el ancho del párrafo */
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio entre elementos del formulario */
+  padding: 1.5rem; /* Padding interno */
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+
+  p {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical; /* Permitir redimensionar verticalmente */
+    min-height: 120px; /* Altura mínima */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: #3b82f6; /* Borde azul al enfocar */
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Sombra de enfoque */
+      outline: none; /* Eliminar el contorno por defecto */
+    }
+  }
+
+  button {
+    /* Estilos para el botón "Enviar Solicitud" */
+    align-self: flex-end; /* Alinea el botón a la derecha */
+    background-color: #ef4444; /* Rojo para rechazar/enviar cambios */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #dc2626; /* Rojo más oscuro en hover */
+      transform: translateY(-2px); /* Efecto de "levantar" */
+    }
+  }
+}

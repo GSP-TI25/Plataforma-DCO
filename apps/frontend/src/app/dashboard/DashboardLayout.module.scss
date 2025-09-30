@@ -1,0 +1,30 @@
+/* Ubicación: .../dashboard/DashboardLayout.module.scss */
+
+/* --- Keyframe para la animación del contenido --- */
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboardLayout {
+  display: flex;
+}
+
+.mainContent {
+  flex-grow: 1;
+  margin-left: 260px; /* <-- Cambiado a 260px */
+  background-color: #f3f4f6; /* Un gris un poco más suave */
+  height: 100vh;
+  overflow-y: auto; /* Para permitir el scroll vertical si el contenido es muy largo */
+}
+
+.pageContent {
+  padding: 2.5rem; /* Un poco más de padding */
+  animation: fadeInContent 0.7s ease-out;
+}

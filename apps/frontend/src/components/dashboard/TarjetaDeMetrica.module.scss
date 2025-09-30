@@ -1,0 +1,40 @@
+// Ubicación: DCO/apps/frontend/src/components/dashboard/TarjetaDeMetrica.module.scss
+.tarjeta {
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.valor {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.iconoWrapper {
+  font-size: 3rem;
+  opacity: 0.3;
+}

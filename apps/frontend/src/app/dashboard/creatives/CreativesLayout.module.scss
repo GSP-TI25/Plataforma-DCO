@@ -1,0 +1,25 @@
+// Ubicación: DCO/apps/frontend/src/app/dashboard/creatives/CreativesLayout.module.scss
+.subMenu {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
+
+  a { // Estilo para los links del sub-menú
+    padding: 1rem 0.5rem;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #1f2937;
+      border-bottom-color: #3b82f6;
+    }
+  }
+}
+
+.content {
+  /* Estilos para el contenedor del contenido de la página */
+}
