@@ -11,7 +11,7 @@ import SelectorDeCopys from './SelectorDeCopys';
 import { uploadImageToMeta, createAdCreativeInMeta, createAdInMeta, obtenerPaginasDeFacebook } from '@/lib/api';
 import { usarAuth } from '@/contexto/ContextoAuth';
 
-export default function FormularioAnuncio({ onGuardado, adSetId, copysDelPlan, clientId, adAccountId }) {
+export default function FormularioAnuncio({ onGuardado, adSetId, copysDelPlan = [], moodboardDelPlan = [], clientId, adAccountId }) {
   const [nombreAnuncio, setNombreAnuncio] = useState('');
   const [activoSeleccionado, setActivoSeleccionado] = useState(null); 
   const [copySeleccionado, setCopySeleccionado] = useState(''); 
@@ -154,12 +154,13 @@ useEffect(() => {
       </form>
 
       <Modal 
-        titulo="Seleccionar Activo de la Biblioteca"
+        titulo="Seleccionar Activo" // <<< CAMBIO 2: Título más genérico
         estaAbierto={assetModalOpen}
         alCerrar={() => setAssetModalOpen(false)}
         size="large" 
       >
-        <SelectorDeActivos onSeleccionar={handleAssetSelect} />
+        {/* <<< CAMBIO 3: Pasamos las imágenes del moodboard al selector */}
+        <SelectorDeActivos onSeleccionar={handleAssetSelect} moodboardImages={moodboardDelPlan} />
       </Modal>
 
       <Modal
@@ -167,7 +168,7 @@ useEffect(() => {
         estaAbierto={copyModalOpen}
         alCerrar={() => setCopyModalOpen(false)}
       >
-      <SelectorDeCopys copys={copysDelPlan} onSeleccionar={handleCopySelect} />
+        <SelectorDeCopys copys={copysDelPlan} onSeleccionar={handleCopySelect} />
       </Modal>
     </>
   );

@@ -1,11 +1,26 @@
 // Ubicación: DCO/apps/frontend/src/components/estudio/SelectorDeActivos.module.scss
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+.selectorContainer {
   max-height: 60vh;
   overflow-y: auto;
-  padding: 0.5rem;
+  padding: 1rem; 
+}
+
+.moodboardSection, .librarySection {
+  margin-bottom: 2rem;
+  
+  h3 {
+    font-size: 1.1rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
 }
 
 .tarjetaActivo {
@@ -14,24 +29,29 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  aspect-ratio: 1 / 1;
+  display: flex; 
+  flex-direction: column;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  }
+  &:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
 
-  img {
+  img {
     width: 100%;
-    height: 140px;
+    flex-grow: 1; 
     object-fit: cover;
+    min-height: 0; 
   }
 
-  p {
+  p {
     padding: 0.5rem;
     font-size: 0.8rem;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-shrink: 0; 
   }
 }

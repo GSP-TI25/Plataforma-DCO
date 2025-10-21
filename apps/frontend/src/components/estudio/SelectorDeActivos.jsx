@@ -4,7 +4,7 @@ import { obtenerActivos } from '@/lib/api';
 import { usarAuth } from '@/contexto/ContextoAuth';
 import estilos from './SelectorDeActivos.module.scss';
 
-export default function SelectorDeActivos({ onSeleccionar }) {
+export default function SelectorDeActivos({ onSeleccionar, moodboardImages = [] }) {
   const [activos, setActivos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const { token } = usarAuth();
@@ -33,18 +33,39 @@ export default function SelectorDeActivos({ onSeleccionar }) {
   }
 
   return (
-    <div className={estilos.galeria}>
-      {activos.map(activo => (
-        <div 
-          key={activo.id} 
-          className={estilos.tarjetaActivo}
-          // <<< CAMBIO: Ahora pasamos el objeto 'activo' completo
-          onClick={() => onSeleccionar(activo)}
-        >
-          <img src={activo.cloudinary_url} alt={activo.file_name} />
-          <p>{activo.file_name}</p>
-        </div>
-      ))}
-    </div>
+    <div className={estilos.selectorContainer}>
+      {moodboardImages && moodboardImages.length > 0 && (
+        <div className={estilos.moodboardSection}>
+          <h3>Conceptos del Plan (IA)</h3>
+          <div className={estilos.galeria}>
+            {moodboardImages.map((imageUrl, index) => (
+              <div 
+                key={`mood-${index}`} 
+                className={estilos.tarjetaActivo}
+                onClick={() => onSeleccionar({ cloudinary_url: imageUrl, file_name: `Concepto IA ${index + 1}` })}
+              >
+                <img src={imageUrl} alt={`Concepto IA ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className={estilos.librarySection}>
+        <h3>Biblioteca de Activos</h3>
+        <div className={estilos.galeria}>
+          {activos.map(activo => (
+            <div 
+              key={activo.id} 
+              className={estilos.tarjetaActivo}
+              onClick={() => onSeleccionar(activo)}
+            >
+              <img src={activo.cloudinary_url} alt={activo.file_name} />
+              <p>{activo.file_name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

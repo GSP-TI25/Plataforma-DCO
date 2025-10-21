@@ -43,8 +43,12 @@ export default function CampaignManagePage() {
   }, [token, clientId, campaignId, setEstaCargando]);
 
   useEffect(() => {
-    const cargarPlanAsociado = async () => {
+    const cargarDatosIniciales = async () => {
       if (!token || !campaignId) return;
+      
+      cargarAdSets(); // Carga los Ad Sets
+
+      // Carga el plan asociado
       try {
         const data = await obtenerPlanPorCampaignId(campaignId, token);
         setPlanData(data);
@@ -53,8 +57,7 @@ export default function CampaignManagePage() {
       }
     };
     
-    cargarAdSets();
-    cargarPlanAsociado();
+    cargarDatosIniciales();
   }, [cargarAdSets, token, campaignId]);
 
 
@@ -158,6 +161,17 @@ export default function CampaignManagePage() {
         </div>
       </div>
 
+      <Modal titulo={`Crear Anuncio en: ${adSetSeleccionado?.name}`} estaAbierto={modalAnuncioAbierto} alCerrar={() => setModalAnuncioAbierto(false)}>
+        <FormularioAnuncio
+          onGuardado={handleAnuncioGuardado}
+          adSetId={adSetSeleccionado?.id}
+          copysDelPlan={planData?.generated_copies || []}
+          moodboardDelPlan={planData?.generated_moodboard || []}
+          clientId={clientId}
+          adAccountId={adAccountId}
+        />
+      </Modal>
+
       <Modal titulo="Crear Nuevo Conjunto de Anuncios" estaAbierto={modalAdSetAbierto} alCerrar={() => setModalAdSetAbierto(false)}>
         <FormularioConjuntoAnuncios
           onGuardado={handleAdSetGuardado}
@@ -166,17 +180,6 @@ export default function CampaignManagePage() {
           campaignId={campaignId}
         />
       </Modal>
-
-      <Modal titulo={`Crear Anuncio en: ${adSetSeleccionado?.name}`} estaAbierto={modalAnuncioAbierto} alCerrar={() => setModalAnuncioAbierto(false)}>
-      <FormularioAnuncio
-        onGuardado={handleAnuncioGuardado}
-        adSetId={adSetSeleccionado?.id}
-        copysDelPlan={planData?.generated_copies || []}
-        clientId={clientId}
-        adAccountId={adAccountId}
-      />
-    </Modal>
-    
     </div>
   );
 }
