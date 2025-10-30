@@ -1,0 +1,312 @@
+// Ubicación: DCO/apps/frontend/src/app/dashboard/reports/ReportsPage.module.scss
+
+.reportsContainer {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background-color: #fff;
+  padding: 1.25rem 1.5rem; 
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); 
+  margin-bottom: 2rem;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #6b7280;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input[type="date"], select {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #f9fafb;
+  }
+
+  svg {
+    font-size: 1.2rem;
+  }
+}
+
+.summarySection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summaryCard {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Sombra suave */
+  border-bottom: 4px solid transparent; /* Borde de color inferior */
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  h4 {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  /* Colores del borde inferior */
+  &.blue { border-color: #3b82f6; }
+  &.green { border-color: #10b981; }
+  &.purple { border-color: #8b5cf6; }
+  &.red { border-color: #ef4444; }
+}
+
+.dataTableSection {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden; 
+
+  h2 {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+  }
+}
+
+.tableContainer {
+  overflow-x: auto; 
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #f3f4f6;
+    white-space: nowrap; 
+  }
+
+  thead {
+    background-color: #f9fafb;
+    th {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  tbody {
+    tr:last-child td {
+      border-bottom: none;
+    }
+    td {
+      color: #374151;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.placeholder {
+  text-align: center;
+  color: #9ca3af;
+  padding: 3rem;
+  font-style: italic;
+}
+
+.platformBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+
+  &.meta { background-color: #dbeafe; color: #1e40af; }
+  &.google { background-color: #fee2e2; color: #991b1b; } 
+  &.tiktok { background-color: #e0e7ff; color: #3730a3; } 
+}
+
+.chartSection {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.contenedorGrafico) {
+    width: 100%;
+    height: 350px; 
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+}
+
+
+.chartGrid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.chartCard {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Sombra suave */
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .recharts-responsive-container {
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  /* <<< Ajustamos el primer gráfico de tendencias para que ocupe más espacio >>> */
+  &:first-child {
+    @media (min-width: 768px) {
+      grid-column: span 3; // Ocupa toda la fila en tablet
+    }
+    @media (min-width: 1200px) {
+      grid-column: span 2; // Ocupa 2/3 en escritorio
+    }
+  }
+
+  /* <<< Ajustamos el gráfico de pie para que ocupe el 1/3 restante >>> */
+  &:nth-child(3) {
+    @media (min-width: 1200px) {
+      grid-column: span 1;
+    }
+  }
+
+  :global(.contenedorGrafico) { 
+    width: 100%;
+    height: 300px;
+  }
+  
+}
+
+.chartCard .placeholder {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-style: italic;
+  padding: 1rem;
+}
+
+.filterActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto; 
+}
+
+.applyButton, .clearButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  padding: 0.5rem 1rem; 
+  border-radius: 6px;
+  font-size: 0.85rem; 
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applyButton {
+  background-color: #3b82f6; 
+  color: white;
+  &:hover {
+    background-color: #2563eb;
+  }
+}
+
+.clearButton {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  &:hover {
+    background-color: #e5e7eb;
+  }
+}

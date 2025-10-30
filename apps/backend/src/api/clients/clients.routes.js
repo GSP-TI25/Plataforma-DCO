@@ -11,7 +11,7 @@ const router = Router();
 router.use(verificarToken);
 
 // Solo los admins pueden gestionar clientes
-router.get('/', checkRole(['admin']), clientController.getClients);
+router.get('/', checkRole(['admin', 'user']), clientController.getClients);
 router.post('/', checkRole(['admin']), clientController.createClient);
 router.put('/:id', checkRole(['admin']), clientController.updateClient);
 router.delete('/:id', checkRole(['admin']), clientController.deleteClient);

@@ -100,7 +100,7 @@ export const subirActivo = (formData, token) => fetchConAuth('/upload', { method
 export const generarCreatividad = (data, token) => fetchConAuth('/generator', { method: 'POST', body: JSON.stringify(data) }, token);
 
 // --- CLIENTS ---
-export const obtenerClientes = (token, page = 1) => fetchConAuth(`/clients?page=${page}&limit=8`, {}, token);
+export const obtenerClientes = (token, page = 1, limit = 8) => fetchConAuth(`/clients?page=${page}&limit=${limit}`, {}, token);
 export const crearCliente = (clientData, token) => fetchConAuth('/clients', { method: 'POST', body: JSON.stringify(clientData) }, token);
 export const actualizarCliente = (id, clientData, token) => fetchConAuth(`/clients/${id}`, { method: 'PUT', body: JSON.stringify(clientData) }, token);
 export const eliminarCliente = (id, token) => fetchConAuth(`/clients/${id}`, { method: 'DELETE' }, token);
@@ -127,7 +127,7 @@ export const obtenerPaginasDeFacebook = (clientId, token) => fetchConAuth(`/meta
 export const crearCampañaEnMeta = (clientId, adAccountId, campaignData, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/campaigns`, { method: 'POST', body: JSON.stringify(campaignData) }, token);
 export const eliminarCampañaDeMeta = (clientId, campaignId, token) => fetchConAuth(`/meta/clients/${clientId}/campaigns/${campaignId}`, { method: 'DELETE' }, token);
 export const obtenerConjuntosDeAnuncios = (clientId, campaignId, token) => fetchConAuth(`/meta/clients/${clientId}/campaigns/${campaignId}/adsets`, {}, token);
-export const crearConjuntoDeAnuncios = (clientId, adAccountId, adSetData, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/adsets`, { method: 'POST', body: JSON.stringify(adSetData) }, token);
+export const createAdSetInMeta = (clientId, adAccountId, adSetData, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/adsets`, { method: 'POST', body: JSON.stringify(adSetData) }, token);
 export const eliminarConjuntoDeAnuncios = (clientId, adSetId, token) => fetchConAuth(`/meta/clients/${clientId}/adsets/${adSetId}`, { method: 'DELETE' }, token);
 
 // --- CONTENT PLANS ---
@@ -160,18 +160,24 @@ export const enviarDecisionDeAprobacion = (approvalToken, status, feedback = '')
 export const iniciarProduccionMeta = (planId, adAccountId, token) => fetchConAuth(`/content-plans/${planId}/create-meta-campaign`, { method: 'POST', body: JSON.stringify({ adAccountId }) }, token);
 export const obtenerPlanPorCampaignId = (metaCampaignId, token) => fetchConAuth(`/content-plans/by-campaign/${metaCampaignId}`, {}, token);
 
+// --- PERFORMANCE REPORTS ---
+export const obtenerReporteRendimiento = (filters = {}, token) => {
+  // Filtramos para solo incluir parámetros que tengan un valor.
+  const cleanFilters = Object.fromEntries(
+    Object.entries(filters).filter(([_, value]) => value)
+  );
+
+  console.log('Filtros enviados al backend:', cleanFilters); // LOG DE DEPURACIÓN
+
+  const queryParams = new URLSearchParams(cleanFilters).toString();
+  const endpoint = `/performance/report${queryParams ? `?${queryParams}` : ''}`;
+  return fetchConAuth(endpoint, {}, token);
+};
 
 
 // --- Funciones para el flujo de creación en Meta ---
 export const uploadImageToMeta = (clientId, adAccountId, imageUrl, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/images`, { method: 'POST', body: JSON.stringify({ imageUrl }) }, token);
 export const createAdCreativeInMeta = (clientId, adAccountId, creativeData, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/creatives`, { method: 'POST', body: JSON.stringify(creativeData) }, token);
 export const createAdInMeta = (clientId, adAccountId, adData, token) => fetchConAuth(`/meta/clients/${clientId}/ad-accounts/${adAccountId}/ads`, { method: 'POST', body: JSON.stringify(adData) }, token);
-
-
-
-
-
-
-
 
 

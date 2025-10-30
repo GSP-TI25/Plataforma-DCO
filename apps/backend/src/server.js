@@ -25,6 +25,7 @@ const facebookAuthRoutes = require('./api/auth/auth.facebook.routes');
 const metaRoutes = require('./api/meta/meta.routes');
 const contentPlanRoutes = require('./api/content-plans/plans.routes');
 const downloadRoutes = require('./api/download/download.routes');
+const performanceRoutes = require('./api/performance/performance.routes'); 
 
 const app = express();
 app.use(express.json()); 
@@ -69,11 +70,12 @@ app.use('/api/v1/meta', metaRoutes);
 app.use('/api/v1/content-plans', contentPlanRoutes);
 app.use('/api/v1/auth', facebookAuthRoutes);
 app.use('/api/v1/download', downloadRoutes);
+app.use('/api/v1/performance', performanceRoutes);
 
 // Middleware de errores. Debe ser el último middleware que se añade.
 app.use(errorHandler);
-
 const PORT = config.port;
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend iniciado y escuchando en el puerto ${PORT}`);
 });

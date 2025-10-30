@@ -1,47 +1,55 @@
-// Ubicación: DCO/apps/frontend/src/components/dashboard/GraficoDeRendimiento.jsx
-'use client'; // Los componentes de gráficos son interactivos y necesitan ser del cliente
-
-import estilos from './GraficoDeRendimiento.module.scss';
+'use client'; 
+import styles from './GraficoDeRendimiento.module.scss';
 import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer 
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
 } from 'recharts';
 
-export default function GraficoDeRendimiento({ data }) {
+export default function GraficoDeRendimiento({ 
+  data, 
+  line1Key = "Clics", 
+  line1Color = "#3b82f6", 
+  line2Key = "Conversiones", 
+  line2Color = "#10b981" 
+}) {
   return (
-    <div className={estilos.contenedorGrafico}>
-      {/* ResponsiveContainer hace que el gráfico se adapte al tamaño de su contenedor */}
+    <div className={styles.contenedorGrafico}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
+        <AreaChart 
+          data={data} 
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
-          {/* La parrilla de fondo del gráfico */}
-          <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          {/* El eje X (horizontal) mostrará las fechas */}
+          <defs>
+            <linearGradient id={`colorArea1_${line1Key}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={line1Color} stopOpacity={0.4}/>
+              <stop offset="95%" stopColor={line1Color} stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id={`colorArea2_${line2Key}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={line2Color} stopOpacity={0.4}/>
+              <stop offset="95%" stopColor={line2Color} stopOpacity={0}/>
+            </linearGradient>
+            <filter id="line-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#000000" floodOpacity="0.15" />
+            </filter>
+          </defs>
+
+          <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" vertical={false} />
           <XAxis dataKey="name" stroke="#6b7280" />
-          {/* El eje Y (vertical) */}
           <YAxis stroke="#6b7280" />
-          {/* El Tooltip es la ventanita que aparece al pasar el mouse sobre un punto */}
-          <Tooltip />
-          {/* La leyenda de abajo (Clics, Conversiones) */}
+          <Tooltip 
+            contentStyle={{ 
+              borderRadius: '8px', 
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)', 
+              border: 'none',
+              padding: '0.5rem 1rem'
+            }}
+            itemStyle={{ fontWeight: 500 }}
+          />
           <Legend />
-          {/* La línea azul para los Clics */}
-          <Line type="monotone" dataKey="Clics" stroke="#3b82f6" strokeWidth={2} activeDot={{ r: 8 }} />
-          {/* La línea verde para las Conversiones */}
-          <Line type="monotone" dataKey="Conversiones" stroke="#10b981" strokeWidth={2} />
-        </LineChart>
+
+          <Area type="monotone" dataKey={line1Key} name={line1Key} stroke={line1Color} fill={`url(#colorArea1_${line1Key})`} strokeWidth={3} activeDot={{ r: 8, strokeWidth: 2, fill: '#fff' }} dot={false} filter="url(#line-shadow)" />
+          <Area type="monotone" dataKey={line2Key} name={line2Key} stroke={line2Color} fill={`url(#colorArea2_${line2Key})`} strokeWidth={3} activeDot={{ r: 8, strokeWidth: 2, fill: '#fff' }} dot={false} filter="url(#line-shadow)" />
+
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );

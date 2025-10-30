@@ -4,7 +4,7 @@ import { useState } from 'react';
 import estilos from './FormularioCliente.module.scss'; // Reutilizamos estilos
 import { usarCarga } from '@/contexto/ContextoCarga';
 import { usarAuth } from '@/contexto/ContextoAuth';
-import { crearConjuntoDeAnuncios } from '@/lib/api';
+import { createAdSetInMeta } from '@/lib/api';
 
 export default function FormularioConjuntoAnuncios({ onGuardado, clientId, adAccountId, campaignId }) {
   const [name, setName] = useState('');
@@ -21,7 +21,7 @@ export default function FormularioConjuntoAnuncios({ onGuardado, clientId, adAcc
         campaign_id: campaignId,
         daily_budget: Math.round(dailyBudget * 100), // Convertir a centavos
       };
-      await crearConjuntoDeAnuncios(clientId, adAccountId, adSetData, token);
+      await createAdSetInMeta(clientId, adAccountId, adSetData, token);
       onGuardado();
     } catch (error) {
       console.error('Error al crear conjunto de anuncios:', error);

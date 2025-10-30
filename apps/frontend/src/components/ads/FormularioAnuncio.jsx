@@ -49,26 +49,38 @@ useEffect(() => {
 
     setEstaCargando(true);
     try {
+      // --- PASO 1: Subir la imagen a Meta y obtener su identificador (hash) ---
+      console.log("Paso 1: Subiendo imagen a Meta...");
       const { hash } = await uploadImageToMeta(clientId, adAccountId, activoSeleccionado.cloudinary_url, token);
+      console.log("Imagen subida con éxito. Hash:", hash);
+
+      // --- PASO 2: Crear la "Creatividad" del anuncio ---
+      console.log("Paso 2: Creando la creatividad del anuncio...");
       const creativeData = {
         name: `Creatividad para ${nombreAnuncio}`,
-        page_id: paginaSeleccionada, // <<< 5. Usamos la página seleccionada
+        page_id: paginaSeleccionada,
         message: copySeleccionado,
         link: urlDestino,
         image_hash: hash,
       };
       const { id: creativeId } = await createAdCreativeInMeta(clientId, adAccountId, creativeData, token);
+      console.log("Creatividad creada con éxito. ID:", creativeId);
+
+      // --- PASO 3: Crear el Anuncio final ---
+      console.log("Paso 3: Creando el anuncio final...");
       const adData = {
         name: nombreAnuncio,
         adset_id: adSetId,
         creative_id: creativeId,
       };
       await createAdInMeta(clientId, adAccountId, adData, token);
-      alert("¡Anuncio creado y publicado en Meta con éxito!");
+      
+      alert("✅ ¡Éxito! El anuncio ha sido creado y enviado a Meta.");
       onGuardado();
+
     } catch (error) {
       console.error("Error en la secuencia de creación de anuncio:", error);
-      alert(`No se pudo crear el anuncio: ${error.message}`);
+      alert(`❌ No se pudo crear el anuncio: ${error.message}`);
     } finally {
       setEstaCargando(false);
     }
